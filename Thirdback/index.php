@@ -29,6 +29,10 @@ if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/
   print('Заполните год.<br/>');
   $errors = TRUE;
 }
+if (empty($_POST['email']) || !is_numeric($_POST['email']) || !preg_match('/^\d+$/', $_POST['email'])) {
+  print('Заполните эл. почту.<br/>');
+  $errors = TRUE;
+}
 
 
 // *************
