@@ -8,5 +8,6 @@
     ?>
   </select>
   <p> Электронная почта <input e-mail ="email" /> </p>
+
   <input type="submit" value="ok" />
 </form>
