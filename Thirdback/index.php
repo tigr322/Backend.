@@ -24,12 +24,12 @@ if (empty($_POST['fio'])) {
   print('Заполните имя.<br/>');
   $errors = TRUE;
 }
-$errors = FALSE;
+
 if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/', $_POST['year'])) {
   print('Заполните год.<br/>');
   $errors = TRUE;
 }
-$errors = FALSE;
+
 if (empty($_POST['email'])) {
   print('Заполните эл. почту.<br/>');
   $errors = TRUE;
