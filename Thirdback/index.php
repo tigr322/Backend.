@@ -53,7 +53,7 @@ try {
   $stmt = $db->prepare("INSERT INTO application SET name = ?");
   $stmt->execute([$_POST['fio']]);
   $stmt = $db->prepare("INSERT INTO application SET date = ?");
-  $stmt->execute([$_POST['date']]);
+  $stmt->execute([$_POST['year']]);
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
