@@ -29,6 +29,10 @@ if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/
   print('Заполните год.<br/>');
   $errors = TRUE;
 }
+if (empty($_POST['email'])) {
+  print('Заполните email.<br/>');
+  $errors = TRUE;
+}
 
 
 
@@ -52,8 +56,8 @@ $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass,
 try {
   $stmt = $db->prepare("INSERT INTO application SET name = ?");
   $stmt->execute([$_POST['fio']]);
-  $stmt = $db->prepare("INSERT INTO application SET date = ?");
-  $stmt->execute([$_POST['year']]);
+  $stmt = $db->prepare("INSERT INTO application SET email = ?");
+  $stmt->execute([$_POST['email']]);
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
