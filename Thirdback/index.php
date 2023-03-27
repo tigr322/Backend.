@@ -57,6 +57,22 @@ catch(PDOException $e){
   print('Error : ' . $e->getMessage());
   exit();
 }
+try {
+  $stmt = $db->prepare("INSERT INTO application SET date = ?");
+  $stmt->execute([$_POST['year']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+try {
+  $stmt = $db->prepare("INSERT INTO application SET email = ?");
+  $stmt->execute([$_POST['email']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
 
 //  stmt - это "дескриптор состояния".
  
