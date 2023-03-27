@@ -52,8 +52,8 @@ $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass,
 try {
   $stmt = $db->prepare("INSERT INTO application SET name = ?");
   $stmt->execute([$_POST['fio']]);
-  $stmt = $db->prepare("INSERT INTO application SET year = ?");
-  $stmt->execute([$_POST['year']]);
+  $stmt = $db->prepare("INSERT INTO application SET date = ?");
+  $stmt->execute([$_POST['date']]);
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
