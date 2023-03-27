@@ -30,10 +30,6 @@ if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/
   $errors = TRUE;
 }
 
-if (empty($_POST['email'])) {
-  print('Заполните эл. почту.<br/>');
-  $errors = TRUE;
-}
 
 
 // *************
