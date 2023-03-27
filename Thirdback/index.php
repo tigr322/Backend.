@@ -52,27 +52,17 @@ $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass,
 try {
   $stmt = $db->prepare("INSERT INTO application SET name = ?");
   $stmt->execute([$_POST['fio']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
-try {
   $stmt = $db->prepare("INSERT INTO application SET date = ?");
+  $stmt->execute([$_POST['date']]);
+  $stmt = $db->prepare("INSERT INTO application SET year = ?");
   $stmt->execute([$_POST['year']]);
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
   exit();
 }
-try {
-  $stmt = $db->prepare("INSERT INTO application SET email = ?");
-  $stmt->execute([$_POST['email']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
+
+
 
 //  stmt - это "дескриптор состояния".
  
