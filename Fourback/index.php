@@ -179,9 +179,9 @@ else {
   }
 
 
-$user = 'u54906';
-$pass = '6634443';
-$db = new PDO('mysql:host=localhost;dbname=u54906', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+$user = 'u52818';
+$pass = '1096859';
+$db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
 
 try {
   $stmt = $db->prepare("INSERT INTO application SET fio = ?, email = ?, year = ?, gender = ?, limbs = ?, biography = ?, accept = ?");
