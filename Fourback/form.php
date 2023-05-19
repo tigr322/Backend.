@@ -27,7 +27,7 @@ if (!empty($messages)) {
 // Далее выводим форму отмечая элементы с ошибками классом error
 // и задавая начальные значения элементов ранее сохраненными.
 ?>
- div class="form">
+ <div class="form">
     <form action="index.php" method="POST">
       <input name="fio" <?php if ($errors['fio']) {print 'class="fio_error"';} ?> value="<?php print $values['fio']; ?>" />
       <input name="email" <?php if ($errors['email']) {print 'class="email_error"';} ?> value="<?php print $values['email']; ?>" />
