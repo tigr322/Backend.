@@ -1,51 +1,38 @@
-<head>
-  <link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<style>
-    .form1{
-        max-width: 700px;
-        text-align: center;
-        margin: 0 auto;
-    }
-</style>
-<body>
-  <div class="form1">
-  <form action="index.php" method="POST">
-    <label> ФИО </label> <br>
-    <input name="name" /> <br>
-    <label> Почта </label> <br>
-    <input name="email" type="email" /> <br>
-    <label> Год рождения </label> <br>
-    <select name="year">
-      <option value="Выбрать">Выбрать</option>
-    <?php
-        for($i=2000;$i<=2022;$i++){
-          printf("<option value=%d>%d год</option>",$i,$i);
-        }
-    ?>
-    </select> <br>
-    <label> Ваш пол </label> <br>
-    <div>
-      <input name="gender" type="radio" value="1" /> M
-      <input name="gender" type="radio" value="2" /> Ж
-    </div>
-    <label> Сколько у вас конечностей </label> <br>
-    <div>
-      <input name="limb" type="radio" value="1" /> 1 
-      <input name="limb" type="radio" value="2" /> 10
-    </div>
-    <label> Выберите суперспособности </label> <br>
-    <select name="power[]" size="3" multiple>
-      <option value="1">Проход сквозь стены</option>
-      <option value="2">Дыхание под водой</option>
-      <option value="3">Ночное зрение</option>
-       <option value="4">Уметь делать сальто назад</option>
-        
-    </select> <br>
-    <label> Биография </label> <br>
-    <textarea name="bio" rows="10" cols="15"></textarea> <br>
-    <input name="checkin"  type="checkbox" value="on"> Согласиться <br>
-    <input type="submit" value="Отправить"/>
-  </form>
-  </div>
-</body>
+<html>
+  <head>
+    <style>
+/* Сообщения об ошибках и поля с ошибками выводим с красным бордюром. */
+.error {
+  border: 2px solid red;
+}
+    </style>  
+  </head>
+  <body>
+
+<?php
+if (!empty($messages)) {
+  print('<div id="messages">');
+  // Выводим все сообщения.
+  foreach ($messages as $message) {
+    print($message);
+  }
+  print('</div>');
+}
+
+// Далее выводим форму отмечая элементы с ошибками классом error
+// и задавая начальные значения элементов ранее сохраненными.
+?>
+
+    <form action="index.php" method="POST">
+      <input name="fio" <?php if ($errors['fio']) {print 'class="fio_error"';} ?> value="<?php print $values['fio']; ?>" />
+      <input name="email" <?php if ($errors['email']) {print 'class="email_error"';} ?> value="<?php print $values['email']; ?>" />
+      <input name="year" <?php if ($errors['year']) {print 'class="year_error"';} ?> value="<?php print $values['year']; ?>" />
+      <input name="gender" <?php if ($errors['gender']) {print 'class="gender_error"';} ?> value="<?php print $values['gender']; ?>" />
+      <input name="limbs" <?php if ($errors['limbs']) {print 'class="limbs_error"';} ?> value="<?php print $values['limbs']; ?>" />
+      <input name="biography" <?php if ($errors['biography']) {print 'class="biography_error"';} ?> value="<?php print $values['biography']; ?>" />
+      <input name="abilities" <?php if ($errors['abilities']) {print 'class="abilities_error"';} ?> value="<?php print $values['abilities']; ?>" />
+      
+      <input type="submit" value="ok" />
+    </form>
+  </body>
+</html>
