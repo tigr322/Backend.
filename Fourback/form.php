@@ -43,7 +43,7 @@ if (!empty($messages)) {
       <input name="biography" <?php if ($errors['biography']) {print 'class="biography_error"';} ?> value="<?php print $values['biography']; ?>" /><br>
       <label> Суперспособности </label> <br>
       <input name="abilities" <?php if ($errors['abilities']) {print 'class="abilities_error"';} ?> value="<?php print $values['abilities']; ?>" /><br>
-      
+       <input name="access" <?php if ($errors['access']) {print 'class="access_error"';} ?> value="<?php print $values['access']; ?>" /> Согласиться <br> 
       <input type="submit" value="ok" /><br>
     </form>
     </div>
