@@ -30,15 +30,15 @@ if (!empty($messages)) {
  <div class="form">
     <form action="index.php" method="POST">
       <label> ФИО </label> <br>
-      <input name="fio" <?php if ($errors['fio']) {print 'class="fio_error"';} ?> value="<?php print $values['Adamyan Tigran Pavlovich']; ?>" />
+      <input name="fio" <?php if ($errors['fio']) {print 'class="fio_error"';} ?> value="<?php print $values['fio']; ?>" />
       <label> Электроная почта </label> <br>
-      <input name="email" <?php if ($errors['email']) {print 'class="email_error"';} ?> value="<?php print $values['tigran05012002@mail.ru']; ?>" />
+      <input name="email" <?php if ($errors['email']) {print 'class="email_error"';} ?> value="<?php print $values['email']; ?>" />
       <label> Год рождения </label> <br>
-      <input name="year" <?php if ($errors['year']) {print 'class="year_error"';} ?> value="<?php print $values['2000']; ?>" />
+      <input name="year" <?php if ($errors['year']) {print 'class="year_error"';} ?> value="<?php print $values['year']; ?>" />
       <label> Пол </label> <br>
-      <input name="gender" <?php if ($errors['gender']) {print 'class="gender_error"';} ?> value="<?php print $values['m']; ?>" />
+      <input name="gender" <?php if ($errors['gender']) {print 'class="gender_error"';} ?> value="<?php print $values['gender']; ?>" />
       <label> Конечностей </label> <br>
-      <input name="limbs" <?php if ($errors['limbs']) {print 'class="limbs_error"';} ?> value="<?php print $values['1']; ?>" />
+      <input name="limbs" <?php if ($errors['limbs']) {print 'class="limbs_error"';} ?> value="<?php print $values['limbs']; ?>" />
       <label> Биография </label> <br>
       <input name="biography" <?php if ($errors['biography']) {print 'class="biography_error"';} ?> value="<?php print $values['biography']; ?>" />
       <label> Суперспособности </label> <br>
