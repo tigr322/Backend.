@@ -187,24 +187,17 @@ try {
   $stmt = $db->prepare("INSERT INTO application SET fio = ?, email = ?, year = ?, gender = ?, limbs = ?, biography = ?, accept = ?");
   $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['year'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_POST['accept']]);
   
-  $app_id =$db->lastInsertId();
-    $som=$db->prepare("INSERT INTO app_ability SET app_id =: person, abl_id = ability");
-    $som->bindParam(':person', $app_id);
-    foreach($_POST['ability']  as $ability){
-    $som->bindParam(':ability', $ability);
-    if($som->execute()==false){
-      print_r($som->errorCode());
-      print_r($som->errorInfo());
-      exit();
-    }
+  $app_id = $db->lastInsertId();
+  $stmt = $db->prepare("INSERT INTO app_ability SET app_id = ?, abl_id = ?");
+  foreach ($abilities as $ability) {
+    $stmt -> execute([$app_id, $ability]);
   }
-    }
-    catch(PDOException $e){
-    print('Error : ' . $e->getMessage());
-    exit();
-    }
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
 
   setcookie('save', '1');
   header('Location: index.php');
 }
-?>
