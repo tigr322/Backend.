@@ -181,10 +181,10 @@ else {
 
 $user = 'u52818';
 $pass = '1096859';
-$db = new PDO('mysql:host=localhost;dbname=u54906', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
+$db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass, [PDO::ATTR_PERSISTENT => true]);
 
 try {
-  $stmt = $db->prepare("INSERT INTO application SET fio = ?, email = ?, year = ?, gender = ?, limbs = ?, biography = ?, accept = ?");
+  $stmt = $db->prepare("INSERT INTO applic SET fio = ?, email = ?, year = ?, gender = ?, limbs = ?, biography = ?, accept = ?");
   $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['year'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_POST['accept']]);
   
   $app_id = $db->lastInsertId();
