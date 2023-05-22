@@ -101,9 +101,9 @@
         $uGen = $_POST['uGen'];
         $uLim = $_POST['uLim'];
         $uBio = $_POST['uBio'];
-        $user = 'u47755';
-        $pass = '2914865';
-        $db = new PDO('mysql:host=localhost;dbname=u47755', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+        $user = 'u52818';
+        $pass = '1096859';
+        $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
         $stmt = $db->prepare("INSERT INTO web4 (name, email, date, gen, lim, bio) VALUES (:name, :email, :date, :gen, :lim,  :bio)");
         $stmt->bindParam(':name', $uName);
         $stmt->bindParam(':email', $uMail);
