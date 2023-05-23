@@ -136,7 +136,7 @@ if (!empty($messages)) {
  </label>
                                                                         
  <label>
-    <div class="check"><input type="checkbox" name="accept" value="1"
+    <div class="check"><input type="checkbox" name="accept" value="checked"
                               <?php if ($errors['accept']) {print 'class="error"';} ?> value="<?php print $values['accept']; ?>" />
         С контрактом ознакомлен(а)<span1></span1></div></label>
 
