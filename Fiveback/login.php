@@ -44,14 +44,12 @@ else {
   $pass =  $_POST['pass'];
 
   $db = new PDO('mysql:host=localhost;dbname=u52818', $db_user, $db_pass, array(
-    PDO::ATTR_PERSISTENT => true
-  ));
+    PDO::ATTR_PERSISTENT => true));
 
   try {
     $stmt = $db->prepare("SELECT * FROM users5 WHERE login = ?");
     $stmt->execute(array(
-      $login
-    ));
+      $login));
     // Получаем данные в виде массива из БД.
     $user = $stmt->fetch();
     // Сравнием текущий хэш пароля с тем, что достали из базы.
