@@ -188,7 +188,7 @@ try {
   $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['year'], $_POST['gender'], $_POST['limbs'], $_POST['biography']]);
   
   $app_id = $db->lastInsertId();
-  $stmt = $db->prepare("INSERT INTO app_ability SET app_id = ?, abl_id = ?");
+  $stmt = $db->prepare("INSERT INTO app_ability SET app_id = ?, ability = ?");
   foreach ($abilities as $ability) {
     $stmt -> execute([$app_id, $ability]);
   }
