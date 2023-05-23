@@ -48,7 +48,7 @@ else {
   ));
 
   try {
-    $stmt = $db->prepare("SELECT * FROM user5 WHERE login = ?");
+    $stmt = $db->prepare("SELECT * FROM users5 WHERE login = ?");
     $stmt->execute(array(
       $login
     ));
