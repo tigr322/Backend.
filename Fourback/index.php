@@ -185,7 +185,7 @@ $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass, [PDO::ATTR_PER
 
 try {
   $stmt = $db->prepare("INSERT INTO applic SET fio = ?, email = ?, year = ?, gender = ?, limbs = ?, biography = ?");
-  $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['year'], $_POST['gender'], $_POST['limbs'], $_POST['biography']);
+  $stmt -> execute([$_POST['fio'], $_POST['email'], $_POST['year'], $_POST['gender'], $_POST['limbs'], $_POST['biography']]);
   
   $app_id = $db->lastInsertId();
   $stmt = $db->prepare("INSERT INTO app_ability SET app_id = ?, abl_id = ?");
