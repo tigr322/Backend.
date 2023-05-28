@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 			$pdostate = $db->prepare("SELECT name,email,birthdate,sex,limb_count,bio FROM contracts WHERE id=:id");
 			$superstate = $db->prepare("SELECT name FROM superpowers WHERE person_id=:id");
 			$pdostate->bindParam(':id',$id);
-			$superstate->bindParam(':id',$id);
+			$superstate->bindParam(':person_id',$id);
 			if($pdostate->execute()==false) {
 				print_r($pdostate->errorCode());
 				print_r($pdostate->errorInfo());
