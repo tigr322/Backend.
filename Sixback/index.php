@@ -87,10 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
       session_start() && !empty($_SESSION['login'])){
 		$db = connectToDB($user,$pass);
 		try {
-			$id = $_SESSION['person_id'];
+			$id = $_SESSION['uid'];
 			$pdostate = $db->prepare("SELECT name,email,birthdate,sex,limb_count,bio FROM contracts WHERE id=:id");
 			$superstate = $db->prepare("SELECT name FROM superpowers WHERE person_id=:id");
-			$pdostate->bindParam(':id',$id);
+			$pdostate->bindParam(':uid',$id);
 			$superstate->bindParam(':person_id',$id);
 			if($pdostate->execute()==false) {
 				print_r($pdostate->errorCode());
