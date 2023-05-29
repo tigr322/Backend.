@@ -238,9 +238,9 @@ else {
   }
   else {
     $id=$_POST['dd'];
-    $user = 'u52815';
-    $pass = '9601081';
-    $db = new PDO('mysql:host=localhost;dbname=u52815', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $user = 'u52818';
+    $pass = '1096859';
+    $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     try {
       $del=$db->prepare("DELETE FROM super WHERE per_id=?");
       $del->execute(array($id));
