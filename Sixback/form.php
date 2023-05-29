@@ -1,98 +1,127 @@
-<html lang="en">
-<head>
-  <meta charset='utf-8'/>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
-</head>
-<body>
-<?php $sessionStarted = !empty($_COOKIE[session_name()]) &&
-      !empty($_SESSION['login']); ?>
-<a href="./login.php"> 
-<?php if($sessionStarted) print('Logout');
-	else print('Login');
-?>
- </a>
-<div class="form-wrapper">
-<div class="form-layer">
+<style>
+body{
+    background-color: #fcee0a;
+    display: flex;
+    justify-content:center;
+    margin-top:5%;
+    margin-bottom:5%;
+}
+.main{
+    padding: 40px;
+    width: 250px;
+    background-color: #00ffd2;
+    border: 2px solid #fd0130;
+    border-radius: 10px;
+}
+
+h1{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.pas{
+    margin:2%;
+    padding: 5%;
+    border: 1px solid;
+    border-color: #fd0130;
+    border-radius: 3px;
+}
+.error {
+    border-color: #fd0130;
+  }
+</style>
 <?php
-	/*print_r("No Errors:".boolval(empty($errors)));
-	print("<br/>");
-	print_r("Session cookie:".!empty($_COOKIE[session_name()]));
-	print("<br/>");
-	print_r("Session start:".session_start());
-	print("<br/>");
-	print_r("Login info:".!empty($_SESSION['login']));
-	*/
+if (!empty($messages)) {
+  print('<div id="messages">');
+  // Выводим все сообщения.
+  foreach ($messages as $message) {
+    print($message);
+  }
+  print('</div>');
+}
 ?>
+<body>
+    <div class="main">
+    <h1>Форма</h1>
+    
+    <form action="index.php" method="POST">
+            <div class="pas <?php if ($errors['name']) {print 'error';} ?>" >
+                Имя:
+                <input name="name" placeholder="Введите имя" 
+                 value="<?php print $values['name']; ?>" />
+            </div>
 
-<h1 class ="titles" id="linktitle"> Form </h1>
-  <form action ="" method = "POST">
-	<label>
-			Name:<br />
-			<input name="field-name-1" <?php if($errors['name']) print('class="error"');?> value="<?php print($values['name'])?>" /> <?php if($errors['name']) print($messages['bad_name']) ?>
-		  </label><br />
-	<label>
-			email:<br />
-			<input name="field-email" type="email" <?php if($errors['email']) print('class="error"');?> value="<?php print($values['email'])?>" /> <?php if($errors['email']) print($messages['bad_email']) ?>
-		  </label><br />
-	<label>
-			Birth-date :<br />
-			<input name="field-date" 
-			  type="date" <?php if($errors['birth_date']) print('class="error"');?> value="<?php print($values['birth_date'])?>" /> <?php if($errors['birth_date']) print($messages['bad_date']) ?> 
-		  </label><br />
-	Sex: <label><input type="radio" <?php if($values['sex'] === 'male') print('checked="checked"');?>
-			name="radio-group-1" value = "male" />
-			Male </label>
-		  <label><input type="radio" <?php if($values['sex'] === 'female') print('checked="checked"');?>
-			name="radio-group-1" value = "female" />
-			Female </label> <?php if($errors['sex']) print($messages['bad_sex']) ?><br />
+            <div class="pas <?php if ($errors['email']) {print 'error';} ?>">
+                E-mail:
+                <input name="email" type="email" placeholder="Введите почту" value="<?php print $values['email']; ?>"
+	            >
+            </div>
 
-	Amoflimbs: <br/> <label><input type="radio" <?php if($values['limbs'] === 1) print('checked="checked"');?>
-			name="radio-group-2" value = "1" />
-			1 </label><br/>
-		  <label><input type="radio" <?php if($values['limbs'] === 2) print('checked="checked"');?>
-			name="radio-group-2" value = "2" />
-			2 </label><br />
-			<label><input type="radio" <?php if($values['limbs'] === 3) print('checked="checked"');?>
-			name="radio-group-2" value = "3" />
-			3 </label><br />
-			<label><input type="radio" <?php if($values['limbs'] === 4) print('checked="checked"');?>
-			name="radio-group-2" value = "4" />
-			4 </label><br />
-			<label><input type="radio" <?php if($values['limbs'] === 5) print('checked="checked"');?>
-			name="radio-group-2" value = "5" />
-			5 </label><br />
-			<?php if($errors['limbs']) print($messages['bad_limbs']) ?>
-	<label>
-			Superpowers:
-			<br/>
-			<select name="field-name-4[]" <?php if($errors['super']) print('class="error"');?>
-			  multiple="multiple">
-			  <option value="immortality" <?php if(array_search('immortality',$values['super'])!==false) print('selected');?>>Immortality</option>
-			  <option value="walkthroughwalls" <?php if(array_search('walkthroughwalls',$values['super'])!==false) print('selected');?>>Walk through walls</option>
-			  <option value="levitation" <?php if(array_search('levitation',$values['super'])!==false) print('selected');?>>levitation</option>
-			</select>
-			<?php if($errors['super']) print($messages['bad_super']) ?>
-		  </label><br />
-	<label>
-	Biography: <br/>
-	  <textarea name = "bio-field" <?php if($errors['bio']) print('class="error"');?>> <?php echo($values['bio']);?> </textarea>
-	</label> <br/>
-	<?php if($errors['bio']) print($messages['bad_bio'])?>
-	<label>
-	  <input type = "checkbox" name = "checkbox" value="realslim"> I agree with the contract </label>
-	   <br/>
-	   <?php if($errors['check']) print($messages['bad_check'])?>
-	  Send: <br/>
-	  <input type="submit" value="Sending" />
-	  <br/>
-	  <?php print($messages['saved']);
-		print('<br/>');
-		print($messages['passmessage']); 
-	  ?>
-  </form>
-</div>
-</div>
+            <div class="pas" >
+                Год рождения:
+                <select id="yearB" name="year" >
+                <?php
+             for($i=1950;$i<=2023;$i++){
+             if($values['year']==$i){
+             printf("<option value=%d selected>%d </option>",$i,$i);
+              }
+             else{
+             printf("<option value=%d>%d </option>",$i,$i);
+            }
+          }
+          ?>
+          </select>
+            </div>
+
+            <div class="pas <?php if ($errors['radio-1']) {print 'error';} ?>"> 
+                Пол:<br>
+                <input type="radio" name="radio-1" value="male"  <?php if($values['radio-1']=="male") {print 'checked';} ?>/>
+                Мужской
+                <input type="radio" name="radio-1" value="female" <?php if($values['radio-1']=="female") {print 'checked';} ?>/>
+                Женский
+            </div>
+
+
+
+            <div class="pas <?php if ($errors['radio-2']) {print 'error';} ?>">
+                Сколько конечностей?<br>
+                    <input type="radio" name="radio-2" value="4" <?php if($values['radio-2']=="4") {print 'checked';} ?>/>
+                    4
+
+                    <input type="radio" name="radio-2" value="3" <?php if($values['radio-2']=="3") {print 'checked';} ?>/>
+                    3
+
+                    <input type="radio" name="radio-2" value="2" <?php if($values['radio-2']=="2") {print 'checked';} ?>/>
+                    2
+
+                    <input type="radio" name="radio-2" value="1" <?php if($values['radio-2']=="1") {print 'checked';} ?>/>
+                    1
+            </div>
+
+
+            <div class="pas <?php if ($errors['super']) {print 'error';} ?>">
+                Сверхспособности?
+                
+                    <select name="super[]" multiple="multiple">
+                    <?php if ($errors['super']) {print 'class="error"';} ?> >
+                    <option value="inv" <?php if($values['inv']==1){print 'selected';} ?>>Бессмертие</option>
+                    <option value="walk" <?php if($values['walk']==1){print 'selected';} ?>>прохождение сквозь стены</option>
+                    <option value="fly" <?php if($values['fly']==1){print 'selected';} ?>>левитация</option>
+                    </select>
+                
+            </div>
+
+            <div class="pas <?php if ($errors['bio']) {print 'error';} ?>">
+                Биография?
+                <textarea name="bio"><?php print $values['bio']; ?></textarea>
+            </div>
+
+                
+                <input name='dd' hidden value=<?php print($_GET['edit_id']);?>>
+                <input type="submit" name='save' value="Сохранить"/>
+                <input type="submit" name='del' value="Удалить"/>
+    </form>
+             <a href='admin.php' class="button">Назад</a>
+
+    </div>
 </body>
-</html>
