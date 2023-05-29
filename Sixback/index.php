@@ -203,9 +203,9 @@ else {
       setcookie('check_error', '', 100000);
     }
     
-    $user = 'u52815';
-    $pass = '9601081';
-    $db = new PDO('mysql:host=localhost;dbname=u52815', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+    $user = 'u52818';
+    $pass = '1096859';
+    $db = new PDO('mysql:host=localhost;dbname=u52818', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
     if(!$errors){
       $upd=$db->prepare("UPDATE form SET name=:name, email=:email, year=:byear, pol=:pol, limbs=:limbs, bio=:bio WHERE id=:id");
       $cols=array(
