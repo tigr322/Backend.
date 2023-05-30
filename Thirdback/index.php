@@ -9,28 +9,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 else{
     $regex_name="/[a-z,A-Z,а-я,А-Я,-]*$/";
     $regex_email="/[a-z]+\w*@[a-z]+\.[a-z]{2,4}$/";
+    $regex_year = "/[1-9]\"
+    $regex_gender = "/[1-9]\"
+    $regex_limb = "/[1-9]\"
+    $regex_power = "/[1-9]\"
     $errors = FALSE;
     if (empty($_POST['name']) or !preg_match($regex_name,$_POST['name'])) {
     print('Заполните имя.<br/>');
     $errors = TRUE;
     }
-    if (empty($_POST['email']) or !preg_match($regex_name,$_POST['email'])){
+    if (empty($_POST['email']) or !preg_match($regex_email,$_POST['email'])){
     print('Заполните почту.<br/>');
     $errors = TRUE;
     }
-    if ($_POST['year']=='Выбрать'){
+    if ($_POST['year']=='Выбрать'or !preg_match($regex_year,$_POST['year'])){
     print('Выберите год рождения.<br/>');
     $errors = TRUE;
     }
-    if (empty($_POST['gender'])){
+    if (empty($_POST['gender'])or !preg_match($regex_gender,$_POST['gender'])){
     print('Выберите пол.<br/>');
     $errors = TRUE;
     }
-    if (empty($_POST['limb'])){
+    if (empty($_POST['limb'])or !preg_match($regex_limb,$_POST['limb'])){
     print('Выберите сколько у вас конечностей.<br/>');
     $errors = TRUE;
     }
-    if(!isset($_POST['power'])){
+    if(!isset($_POST['power'])or !preg_match($regex_power,$_POST['power'])){
         print('Выберите хотя бы одну суперспособность.<br/>');
         $errors=TRUE;
     }
