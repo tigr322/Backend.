@@ -10,8 +10,8 @@ else{
     $regex_name="/[a-z,A-Z,а-я,А-Я,-]*$/";
     $regex_email="/[a-z]+\w*@[a-z]+\.[a-z]{2,4}$/";
     $regex_year = "/[2000-2023]$/"
-    $regex_gender = "/[1,2]$/"
-    $regex_limb = "/[1,10]$/"
+    $regex_gender = "/[1-2]$/"
+    $regex_limb = "/[1-10]$/"
     $regex_power = array('Проход сквозь стены','Дыхание под водой','Ночное зрение','Уметь делать сальто назад');
 
     $errors = FALSE;
