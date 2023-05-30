@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=UTF-8');
-
+ 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (!empty($_GET['save'])) {
   }
@@ -9,10 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 else{
     $regex_name="/[a-z,A-Z,а-я,А-Я,-]*$/";
     $regex_email="/[a-z]+\w*@[a-z]+\.[a-z]{2,4}$/";
-    $regex_year = "/[1-9]\"
-    $regex_gender = "/[1-9]\"
-    $regex_limb = "/[1-9]\"
-    $regex_power = "/[1-9]\"
+    $regex_year = "/[2000-2023]$/"
+    $regex_gender = "/[1,2]$/"
+    $regex_limb = "/[1,10]$/"
+    $regex_power = array('Проход сквозь стены','Дыхание под водой','Ночное зрение','Уметь делать сальто назад');
+
     $errors = FALSE;
     if (empty($_POST['name']) or !preg_match($regex_name,$_POST['name'])) {
     print('Заполните имя.<br/>');
